@@ -181,30 +181,5 @@ fact_schema_drop= ("DROP SCHEMA IF EXISTS fact_tables CASCADE")
 dimension_schema_drop= ("DROP SCHEMA IF EXISTS dimension_tables CASCADE")
 staging_schema_drop= ("DROP SCHEMA IF EXISTS staging_tables CASCADE")
 
-# create_tables.py
-
-def create_schemas(cur, conn):
-    '''
-    Function to create schemas. This function uses the variable 'create_schemas_queries' defined in the 'sql_queries.py' file.
-    Parameters:
-        - curr: Cursor for a database connection
-        - conn: Database connection
-    Outputs:
-        None
-    '''
-    for query in create_schemas_queries:
-        cur.execute(query)
-        conn.commit()        
-
-def drop_schemas(cur, conn):
-    '''
-    Function to drop schemas. This function uses the variable 'drop_schemas_queries' defined in the 'sql_queries.py' file.
-    Parameters:
-        - curr: Cursor for a database connection
-        - conn: Database connection
-    Outputs:
-        None
-    '''
-    for query in drop_schemas_queries:
-        cur.execute(query)
-        conn.commit()
+create_schemas_queries =[fact_schema,dimension_schema,staging_schema]
+drop_schemas_queries= [fact_schema_drop,dimension_schema_drop,staging_schema_drop]
